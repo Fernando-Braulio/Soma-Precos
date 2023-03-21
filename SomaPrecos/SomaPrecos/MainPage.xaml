@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SomaPrecos.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Margin="24" CornerRadius="10">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+                <Label Text="TOTAL " HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
+                <Label Text="€" HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
+                <Label x:Name="total" HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
+            </StackLayout>
+        </Frame>
+
+        <FlexLayout Margin="10" AlignItems="Stretch" JustifyContent="SpaceEvenly">
+            <Entry x:Name="idProd" IsVisible="False"/>
+            <Entry x:Name="nomeProd" FlexLayout.Grow="1" Placeholder="Produto" />
+            <Entry x:Name="vlrProd" WidthRequest="80" Placeholder="Valor" Keyboard="Numeric" />
+            <Button HorizontalOptions="End" Text="OK" Clicked="OnSaveButtonClicked" />
+        </FlexLayout>
+
+        <CollectionView x:Name="cvProdutos"
+                        Margin="20"
+                        SelectionMode="Single"
+                        SelectionChanged="OnSelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{Binding Nome}" Grid.Column="0"
+                               HorizontalOptions="Start"
+                               FontSize="Medium"/>
+
+                        <Label HorizontalOptions="EndAndExpand" Grid.Column="1">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="€" FontSize="Medium"/>
+                                    <Span Text="{Binding Valor}" FontSize="Medium"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
+
