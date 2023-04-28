@@ -15,7 +15,7 @@
         <FlexLayout Margin="10" AlignItems="Stretch" JustifyContent="SpaceEvenly">
             <Entry x:Name="idProd" IsVisible="False"/>
             <Entry x:Name="nomeProd" FlexLayout.Grow="1" Placeholder="Produto" />
-            <Entry x:Name="vlrProd" WidthRequest="80" Placeholder="Valor" Keyboard="Numeric" />
+            <Entry x:Name="vlrProd" WidthRequest="80" Placeholder="Valor" Keyboard="Telephone" />
             <Button HorizontalOptions="End" Text="OK" Clicked="OnSaveButtonClicked" />
         </FlexLayout>
 
